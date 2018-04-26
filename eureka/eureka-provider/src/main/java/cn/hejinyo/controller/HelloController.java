@@ -1,4 +1,4 @@
-package cn.hejinyo.eurekaprovider;
+package cn.hejinyo.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;

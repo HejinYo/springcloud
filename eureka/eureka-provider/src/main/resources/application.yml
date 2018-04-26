@@ -1,10 +1,22 @@
 server:
   port: 8100
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:9000/eureka
 spring:
   application:
     name: hello-service
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    # 服务续约任务调用间隔时间，默认30秒
+    lease-renewal-interval-in-seconds: 30
+    # 服务失效时间，默认90秒
+    lease-expiration-duration-in-seconds: 90
+
+# 没有特别为 Region 配置 Zone 的时候，默认采用 defaultZone
+# 若要为应用指定Zone，可以通过 eureka.clent.availability-zones 属性来进行设置，可以设置多个通过逗号分隔
+
+# 微服务应用中使用 Ribbon 来实现服务调用时，对于 Zone 的设置可以在负载均衡实现区域亲和特性： Ribbon 的默认策略会优先访问同客户端处于一个Zone中的服务端实例，没有可用的时候才会访问其他Zone中的实例；
+# 所以通过Zone 属性的定义，配合实际部署的物理结构，可以有效设计出对区域性故障的容错集群
