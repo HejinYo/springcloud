@@ -1,9 +1,9 @@
 server:
-  port: 8761
+  port: 8762
 
 spring:
   application:
-    name: eureka-server
+    name: eureka-server-back
 
 eureka:
   instance:
@@ -11,10 +11,10 @@ eureka:
   client:
     # 注册到eureka，单节点不进行注册
     # register-with-eureka: false
-    # 服务获取，注册中心不需要
+    # 服务获取，单节点注册中心不需要
     # fetch-registry: false
     service-url:
-      defaultZone: http://${eureka.instance.hostname}:8762/eureka
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka
   server:
     # 关闭保护机制，确保注册中心可以将不可用的实例正确删除
     enable-self-preservation: false
