@@ -17,6 +17,7 @@ security:
 eureka:
   instance:
     hostname: localhost
+    prefer-ip-address: true
   client:
     # 注册到eureka，单节点不进行注册
     # register-with-eureka: false
